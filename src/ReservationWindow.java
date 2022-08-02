@@ -1,25 +1,33 @@
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 
 public class ReservationWindow
 {
     private JComboBox comboBox1;
     private JComboBox comboBox2;
     private JComboBox comboBox3;
+    public static double pricePerTicket = 0;
+    private String[] domesticAirports = new String[]{"Warsaw","Modlin","Lodz","Cracow","Gdansk","Radom"};
+    private String[] internationalAirports = new String[]{"Paris","Bangok","Madrid","Berlin","Monachium","Lisbon","Washington","Moscow","Beijing","London"};
+
+
+
+
+
 
     private JButton startReservationButton;
     private JPanel ReservationWindow;
+    DefaultComboBoxModel<String> defaultComboBoxModelDomestic;
+    DefaultComboBoxModel<String> defaultComboBoxModelInternational;
+
 
     public ReservationWindow()
     {
-        startReservationButton.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
 
-            }
-        });
+
         startReservationButton.addActionListener(new ActionListener()
         {
             @Override
@@ -32,7 +40,94 @@ public class ReservationWindow
                 frame.setVisible(true);
             }
         });
+        for (String string:domesticAirports)
+        {
+            comboBox2.addItem(string);
+        }
+       comboBox1.addItem("Domestic Flights");
+        comboBox1.addItem("International Flights");
+        for (String string : internationalAirports)
+        {
+            comboBox3.addItem(string);
+            System.out.println(string);
+        }
+        for (String string:domesticAirports)
+        {
+        comboBox3.addItem(string);
+            System.out.println(string);
+        }
+                defaultComboBoxModelDomestic = new DefaultComboBoxModel<>(domesticAirports);
+                defaultComboBoxModelInternational = new DefaultComboBoxModel<>(internationalAirports);
+        comboBox1.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                if(comboBox1.getSelectedItem().equals("Domestic Flights"))
+                {
+                    System.out.println("domestic");
+                    comboBox3.setModel(defaultComboBoxModelDomestic);
+                }
+                else
+                {
+                    System.out.println("internationalAirports");
+                    comboBox3.setModel(defaultComboBoxModelInternational);
+                }
+            }
+        });
+        comboBox3.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                String tmp = String.valueOf(comboBox3.getSelectedItem());
+                switch (tmp)
+                {
+                    case "Paris":
+                    {
+                        pricePerTicket = 100.0;
+                        break;
+                    }case "Bangok":
+                    {
+                        pricePerTicket = 900.0;
+                        break;
+                    }case "Madrid":
+                    {
+                        pricePerTicket = 60.0;
+                        break;
+                    }case "Berlin":
+                    {
+                        pricePerTicket = 25.0;
+                        break;
+                    }case "Monachium":
+                    {
+                        pricePerTicket = 30.0;
+                        break;
+                    }case "Lisbon":
+                    {
+                        pricePerTicket = 80.0;
+                        break;
+                    }case "Washington":
+                    {
+                        pricePerTicket = 600.0;
+                        break;
+                    }case "Moscow":
+                    {
+                        pricePerTicket = 120.0;
+                        break;
+                    }case "Beijing":
+                    {
+                        pricePerTicket = 1000.0;
+                        break;
+                    }case "London":
+                    {
+                        pricePerTicket = 50.0;
+                        break;
+                    }
 
+                }
+            }
+        });
     }
 
     public static void main(String[] args)

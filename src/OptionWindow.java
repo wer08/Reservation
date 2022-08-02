@@ -29,7 +29,7 @@ public class OptionWindow
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                double price = (Integer)spinner1.getValue() * 10 + (Integer) spinner2.getValue() * 5 + (Integer)spinner3.getValue()*1.50;
+                double price = (Integer)spinner1.getValue() *  ReservationWindow.pricePerTicket+ (Integer) spinner2.getValue() * (0.5*ReservationWindow.pricePerTicket) + (Integer)spinner3.getValue()*1.50;
                 System.out.println(price);
                         textPane1.setText(""+price);
             }

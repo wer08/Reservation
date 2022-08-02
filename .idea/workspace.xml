@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74859f88-c98b-4d58-b59a-2596465abee5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reservation.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OptionWindow.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OptionWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ReservationWindow.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ReservationWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OptionWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OptionWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ReservationWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReservationWindow.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ReservationWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReservationWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
