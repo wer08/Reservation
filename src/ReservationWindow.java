@@ -1,8 +1,5 @@
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
 
 public class ReservationWindow
 {
@@ -13,19 +10,31 @@ public class ReservationWindow
     private String[] domesticAirports = new String[]{"Warsaw","Modlin","Lodz","Cracow","Gdansk","Radom"};
     private String[] internationalAirports = new String[]{"Paris","Bangok","Madrid","Berlin","Monachium","Lisbon","Washington","Moscow","Beijing","London"};
 
+    private String[] allAirports = new String[]{"Warsaw","Modlin","Lodz","Cracow","Gdansk","Radom","Paris","Bangok","Madrid","Berlin","Monachium","Lisbon","Washington","Moscow","Beijing","London"};
 
 
 
 
 
     private JButton startReservationButton;
+    private ButtonGroup jRadioButtonGroup = new ButtonGroup();
     private JPanel ReservationWindow;
+    private JRadioButton businessClassRadioButton;
+    private JRadioButton economyClassRadioButton;
+    private JSpinner spinner1;
+    private JSpinner spinner2;
+    private JSpinner spinner3;
     DefaultComboBoxModel<String> defaultComboBoxModelDomestic;
     DefaultComboBoxModel<String> defaultComboBoxModelInternational;
+    DefaultComboBoxModel<String> defaultComboBoxModel;
+
 
 
     public ReservationWindow()
     {
+        jRadioButtonGroup.add(businessClassRadioButton);
+        jRadioButtonGroup.add(economyClassRadioButton);
+
 
 
         startReservationButton.addActionListener(new ActionListener()
@@ -44,6 +53,7 @@ public class ReservationWindow
         {
             comboBox2.addItem(string);
         }
+        comboBox1.addItem("Show All");
        comboBox1.addItem("Domestic Flights");
         comboBox1.addItem("International Flights");
         for (String string : internationalAirports)
@@ -58,6 +68,7 @@ public class ReservationWindow
         }
                 defaultComboBoxModelDomestic = new DefaultComboBoxModel<>(domesticAirports);
                 defaultComboBoxModelInternational = new DefaultComboBoxModel<>(internationalAirports);
+                defaultComboBoxModel = new DefaultComboBoxModel<>(allAirports);
         comboBox1.addActionListener(new ActionListener()
         {
             @Override
@@ -68,10 +79,15 @@ public class ReservationWindow
                     System.out.println("domestic");
                     comboBox3.setModel(defaultComboBoxModelDomestic);
                 }
-                else
+                else if(comboBox1.getSelectedItem().equals("International Flights"))
                 {
                     System.out.println("internationalAirports");
                     comboBox3.setModel(defaultComboBoxModelInternational);
+                }
+                else
+                {
+                    comboBox3.setModel(defaultComboBoxModel);
+                    System.out.println("did nothing");
                 }
             }
         });
@@ -126,6 +142,14 @@ public class ReservationWindow
                     }
 
                 }
+            }
+        });
+        businessClassRadioButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                pricePerTicket = pricePerTicket*2;
             }
         });
     }
