@@ -1,5 +1,8 @@
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReservationWindow
 {
@@ -7,10 +10,10 @@ public class ReservationWindow
     private JComboBox comboBox2;
     private JComboBox comboBox3;
     public static double pricePerTicket = 0;
-    private String[] domesticAirports = new String[]{"Warsaw","Modlin","Lodz","Cracow","Gdansk","Radom"};
-    private String[] internationalAirports = new String[]{"Paris","Bangok","Madrid","Berlin","Monachium","Lisbon","Washington","Moscow","Beijing","London"};
+    private List<String> domesticAirports = new ArrayList<>();
+    private List<String> internationalAirports = new ArrayList<>();
 
-    private String[] allAirports = new String[]{"Warsaw","Modlin","Lodz","Cracow","Gdansk","Radom","Paris","Bangok","Madrid","Berlin","Monachium","Lisbon","Washington","Moscow","Beijing","London"};
+    private List<String> allAirports = new ArrayList<>();
 
 
 
@@ -18,7 +21,7 @@ public class ReservationWindow
 
     private JButton startReservationButton;
     private ButtonGroup jRadioButtonGroup = new ButtonGroup();
-    private JPanel ReservationWindow;
+    public JPanel ReservationWindow;
     private JRadioButton businessClassRadioButton;
     private JRadioButton economyClassRadioButton;
     private JSpinner spinner1;
@@ -35,6 +38,32 @@ public class ReservationWindow
         jRadioButtonGroup.add(businessClassRadioButton);
         jRadioButtonGroup.add(economyClassRadioButton);
 
+
+        try
+        {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/airplanes", "root", null);
+            Statement statement = connection.createStatement();
+            ResultSet resultSetDomestic = statement.executeQuery("select * from airports where country = 'Poland'");
+            while (resultSetDomestic.next())
+            {
+                domesticAirports.add(resultSetDomestic.getString("name"));
+            }
+            ResultSet resultSetInternational = statement.executeQuery("select * from airports where country != 'Poland'");
+            while (resultSetInternational.next())
+            {
+                internationalAirports.add(resultSetInternational.getString("name"));
+            }
+            ResultSet resultSet = statement.executeQuery("select * from airports ");
+            while (resultSet.next())
+            {
+                allAirports.add(resultSet.getString("name"));
+            }
+
+        }
+        catch (SQLException e)
+        {
+            e.getSQLState();
+        }
 
 
         startReservationButton.addActionListener(new ActionListener()
@@ -58,17 +87,19 @@ public class ReservationWindow
         comboBox1.addItem("International Flights");
         for (String string : internationalAirports)
         {
-            comboBox3.addItem(string);
             System.out.println(string);
+            comboBox3.addItem(string);
         }
         for (String string:domesticAirports)
         {
         comboBox3.addItem(string);
-            System.out.println(string);
         }
-                defaultComboBoxModelDomestic = new DefaultComboBoxModel<>(domesticAirports);
-                defaultComboBoxModelInternational = new DefaultComboBoxModel<>(internationalAirports);
-                defaultComboBoxModel = new DefaultComboBoxModel<>(allAirports);
+                String[] domesticAirportsArray = domesticAirports.toArray(new String[0]);
+                String[] internationalAirportsArray = internationalAirports.toArray(new String[0]);
+                String[] allAirportsArray = allAirports.toArray(new String[0]);
+                defaultComboBoxModelDomestic = new DefaultComboBoxModel<>(domesticAirportsArray);
+                defaultComboBoxModelInternational = new DefaultComboBoxModel<>(internationalAirportsArray);
+                defaultComboBoxModel = new DefaultComboBoxModel<>(allAirportsArray);
         comboBox1.addActionListener(new ActionListener()
         {
             @Override
@@ -76,18 +107,18 @@ public class ReservationWindow
             {
                 if(comboBox1.getSelectedItem().equals("Domestic Flights"))
                 {
-                    System.out.println("domestic");
+
                     comboBox3.setModel(defaultComboBoxModelDomestic);
                 }
                 else if(comboBox1.getSelectedItem().equals("International Flights"))
                 {
-                    System.out.println("internationalAirports");
+
                     comboBox3.setModel(defaultComboBoxModelInternational);
                 }
                 else
                 {
                     comboBox3.setModel(defaultComboBoxModel);
-                    System.out.println("did nothing");
+
                 }
             }
         });
