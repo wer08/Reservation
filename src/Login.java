@@ -12,6 +12,7 @@ public class Login
     private JPanel Login;
     private JTextField textField3;
     private JTextField textField4;
+    private static JFrame frame;
     private final User user;
     private static boolean flag;
 
@@ -50,12 +51,13 @@ public class Login
                 }
                 if(flag)
                 {
-                    user.addUser(name,surname, username , password );
+                    user.addUser(name,surname,username,password );
                     JFrame frame2 = new JFrame("ReservationWindow");
                     frame2.setContentPane(new ReservationWindow().ReservationWindow);
                     frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame2.pack();
                     frame2.setVisible(true);
+                    frame.dispose();
                 }
             }
         });
@@ -64,10 +66,12 @@ public class Login
 
     public static void main(String[] args)
     {
-        JFrame frame = new JFrame("Login");
+        frame = new JFrame("Login");
         frame.setContentPane(new Login().Login);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
     }
+
 }

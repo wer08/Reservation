@@ -98,8 +98,6 @@ public class User
             statement.setString(4,username);
             statement.setString(5,password);
             statement.execute();
-
-
         } catch (SQLException e)
         {
             throw new RuntimeException(e);

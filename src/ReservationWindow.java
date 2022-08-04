@@ -71,11 +71,15 @@ public class ReservationWindow
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                JFrame frame = new JFrame("OptionWindow");
-                frame.setContentPane(new OptionWindow().OptionWindow);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.pack();
-                frame.setVisible(true);
+                JFrame frame2 = new JFrame("OptionWindow");
+                frame2.setContentPane(new OptionWindow().OptionWindow);
+                frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame2.pack();
+                frame2.setVisible(true);
+                JFrame f3 = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, ReservationWindow);
+                f3.dispose();
+
+
             }
         });
         for (String string:domesticAirports)
@@ -185,14 +189,14 @@ public class ReservationWindow
         });
     }
 
-    public static void main(String[] args)
+   /* public static void main(String[] args)
     {
-        JFrame frame = new JFrame("ReservationWindow");
+        frame = new JFrame("ReservationWindow");
         frame.setContentPane(new ReservationWindow().ReservationWindow);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-    }
+    }*/
 
     private void createUIComponents()
     {

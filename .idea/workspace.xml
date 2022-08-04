@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="74859f88-c98b-4d58-b59a-2596465abee5" name="Changes" comment="Second commit.Working on comboBox">
-      <change afterPath="$PROJECT_DIR$/lib/mysql-connector-java-8.0.30.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Login.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
+    <list default="true" id="74859f88-c98b-4d58-b59a-2596465abee5" name="Changes" comment="Added first implementation of dataBase">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reservation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Reservation.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DatePicker.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DatePicker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FlightsTabel.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FlightsTabel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ReservationWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReservationWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,17 +35,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/wojci/Downloads/project/Reservation/lib/mysql-connector-java-8.0.30.jar",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/wojci/Downloads/project/Reservation/lib/mysql-connector-java-8.0.30.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.Unnamed">
     <configuration name="ReservationWindow" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ReservationWindow" />
@@ -89,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659434896214</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added first implementation of dataBase">
+      <created>1659539362316</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1659539362316</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -106,6 +106,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Second commit.Working on comboBox" />
-    <option name="LAST_COMMIT_MESSAGE" value="Second commit.Working on comboBox" />
+    <MESSAGE value="Added first implementation of dataBase" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added first implementation of dataBase" />
   </component>
 </project>
