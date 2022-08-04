@@ -76,13 +76,35 @@ public class User
             while(resultSet.next())
             {
                 usernames.add(resultSet.getString("username"));
-                System.out.println(resultSet.getString("username"));
             }
         }
         catch (SQLException e)
         {
             e.getSQLState();
         }
+    }
+    public boolean checkPassword(String username, String password)
+    {
+        try
+        {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/airplanes", "root", null);
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("Select * from clients where username ='"+username+"'");
+            while(resultSet.next())
+            {
+                if(resultSet.getString("password").equals(password))
+                {
+                    System.out.println("correct");
+                    return true;
+                }
+            }
+
+        }
+        catch (SQLException e)
+        {
+            e.getSQLState();
+        }
+        return false;
     }
 
     public void addUser(String name, String surname, String username, String password)

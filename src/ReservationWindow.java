@@ -13,11 +13,6 @@ public class ReservationWindow
     private List<String> domesticAirports = new ArrayList<>();
     private List<String> internationalAirports = new ArrayList<>();
 
-    private List<String> allAirports = new ArrayList<>();
-
-
-
-
 
     private JButton startReservationButton;
     private ButtonGroup jRadioButtonGroup = new ButtonGroup();
@@ -27,9 +22,18 @@ public class ReservationWindow
     private JSpinner spinner1;
     private JSpinner spinner2;
     private JSpinner spinner3;
-    DefaultComboBoxModel<String> defaultComboBoxModelDomestic;
-    DefaultComboBoxModel<String> defaultComboBoxModelInternational;
-    DefaultComboBoxModel<String> defaultComboBoxModel;
+    private int dayInt;
+    private int monthInt;
+    private int yearInt;
+
+    private DefaultComboBoxModel<String> defaultComboBoxModelDomestic;
+    private DefaultComboBoxModel<String> defaultComboBoxModelInternational;
+    private DefaultComboBoxModel<String> defaultComboBoxModel;
+    private SpinnerNumberModel day= new SpinnerNumberModel(1,1,31,1);
+    private SpinnerNumberModel month= new SpinnerNumberModel(1,1,12,1);
+    private SpinnerNumberModel year= new SpinnerNumberModel(2022,2022,2025,1);
+
+
 
 
 
@@ -37,8 +41,12 @@ public class ReservationWindow
     {
         jRadioButtonGroup.add(businessClassRadioButton);
         jRadioButtonGroup.add(economyClassRadioButton);
+        spinner1.setModel(day);
+        spinner2.setModel(month);
+        spinner3.setModel(year);
 
 
+        List<String> allAirports = new ArrayList<>();
         try
         {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/airplanes", "root", null);
@@ -71,6 +79,10 @@ public class ReservationWindow
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                dayInt = (Integer)spinner1.getValue();
+                monthInt = (Integer)spinner2.getValue();
+                yearInt = (Integer)spinner3.getValue();
+
                 JFrame frame2 = new JFrame("OptionWindow");
                 frame2.setContentPane(new OptionWindow().OptionWindow);
                 frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -91,7 +103,6 @@ public class ReservationWindow
         comboBox1.addItem("International Flights");
         for (String string : internationalAirports)
         {
-            System.out.println(string);
             comboBox3.addItem(string);
         }
         for (String string:domesticAirports)
@@ -122,7 +133,6 @@ public class ReservationWindow
                 else
                 {
                     comboBox3.setModel(defaultComboBoxModel);
-
                 }
             }
         });

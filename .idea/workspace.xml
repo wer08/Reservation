@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="74859f88-c98b-4d58-b59a-2596465abee5" name="Changes" comment="Added first implementation of dataBase">
+    <list default="true" id="74859f88-c98b-4d58-b59a-2596465abee5" name="Changes" comment="windows closing when going to the next window">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ReservationWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReservationWindow.java" afterDir="false" />
@@ -89,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659539362316</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="windows closing when going to the next window">
+      <created>1659597309057</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1659597309057</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -107,6 +114,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Second commit.Working on comboBox" />
     <MESSAGE value="Added first implementation of dataBase" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added first implementation of dataBase" />
+    <MESSAGE value="windows closing when going to the next window" />
+    <option name="LAST_COMMIT_MESSAGE" value="windows closing when going to the next window" />
   </component>
 </project>

@@ -14,12 +14,21 @@ public class Login
     private JTextField textField4;
     private static JFrame frame;
     private final User user;
-    private static boolean flag;
+    private boolean flag;
+    private boolean flagUser;
+    private boolean flagPassword;
+    private String username;
+    private String password;
+    private String name;
+    private String surname;
+
+
 
 
     public Login()
     {
         user = new User();
+
 
         List <String> users = user.getUsernames();
         System.out.println(users.size());
@@ -30,11 +39,10 @@ public class Login
             public void actionPerformed(ActionEvent e)
             {
                 System.out.println(users.size());
-                String username = textField1.getText();
-
-                String password = textField2.getText();
-                String name = textField3.getText();
-                String surname = textField4.getText();
+                username = textField1.getText();
+                password = textField2.getText();
+                name = textField3.getText();
+                surname = textField4.getText();
                 flag = true;
                 for (String string: users)
                 {
@@ -62,6 +70,49 @@ public class Login
             }
         });
 
+        logInButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                flagPassword = false;
+                flagUser = false;
+                username = textField1.getText();
+                password = textField2.getText();
+                name = textField3.getText();
+                surname = textField4.getText();
+                for (String string:users)
+                {
+                    if(username.equals(string))
+                    {
+                        flagUser =true;
+                        System.out.println("User found");
+                    }
+                }
+
+                if(user.checkPassword(username,password))
+                {
+                    flagPassword = true;
+                    System.out.println("password correct");
+                }
+                if(!flagPassword)
+                {
+                    JOptionPane.showMessageDialog(null,"Wrong username or password");
+                }
+                else
+                {
+                    JFrame frame2 = new JFrame("ReservationWindow");
+                    frame2.setContentPane(new ReservationWindow().ReservationWindow);
+                    frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame2.pack();
+                    frame2.setVisible(true);
+                    frame.dispose();
+                }
+
+
+
+            }
+        });
     }
 
     public static void main(String[] args)
