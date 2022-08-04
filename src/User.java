@@ -16,11 +16,6 @@ public class User
         return usernames;
     }
 
-    public int getId()
-    {
-        return id;
-    }
-
     public String getName()
     {
         return name;

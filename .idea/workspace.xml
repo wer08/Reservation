@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="74859f88-c98b-4d58-b59a-2596465abee5" name="Changes" comment="windows closing when going to the next window">
+    <list default="true" id="74859f88-c98b-4d58-b59a-2596465abee5" name="Changes" comment="working on spinners">
+      <change afterPath="$PROJECT_DIR$/src/FlightChoice.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FlightChoice.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OptionWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/OptionWindow.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OptionWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OptionWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ReservationWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReservationWindow.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ReservationWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReservationWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
     </list>
@@ -96,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659597309057</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="working on spinners">
+      <created>1659603739516</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1659603739516</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -115,6 +126,7 @@
     <MESSAGE value="Second commit.Working on comboBox" />
     <MESSAGE value="Added first implementation of dataBase" />
     <MESSAGE value="windows closing when going to the next window" />
-    <option name="LAST_COMMIT_MESSAGE" value="windows closing when going to the next window" />
+    <MESSAGE value="working on spinners" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on spinners" />
   </component>
 </project>

@@ -15,16 +15,16 @@ public class ReservationWindow
 
 
     private JButton startReservationButton;
-    private ButtonGroup jRadioButtonGroup = new ButtonGroup();
     public JPanel ReservationWindow;
-    private JRadioButton businessClassRadioButton;
-    private JRadioButton economyClassRadioButton;
     private JSpinner spinner1;
     private JSpinner spinner2;
     private JSpinner spinner3;
-    private int dayInt;
-    private int monthInt;
-    private int yearInt;
+    public static String airportNameDeparture;
+    public static String airportNameArrival;
+    public static int dayInt;
+    public static int monthInt;
+    public static int yearInt;
+
 
     private DefaultComboBoxModel<String> defaultComboBoxModelDomestic;
     private DefaultComboBoxModel<String> defaultComboBoxModelInternational;
@@ -39,8 +39,6 @@ public class ReservationWindow
 
     public ReservationWindow()
     {
-        jRadioButtonGroup.add(businessClassRadioButton);
-        jRadioButtonGroup.add(economyClassRadioButton);
         spinner1.setModel(day);
         spinner2.setModel(month);
         spinner3.setModel(year);
@@ -82,18 +80,23 @@ public class ReservationWindow
                 dayInt = (Integer)spinner1.getValue();
                 monthInt = (Integer)spinner2.getValue();
                 yearInt = (Integer)spinner3.getValue();
-
-                JFrame frame2 = new JFrame("OptionWindow");
-                frame2.setContentPane(new OptionWindow().OptionWindow);
-                frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame2.pack();
-                frame2.setVisible(true);
-                JFrame f3 = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, ReservationWindow);
-                f3.dispose();
-
-
+                if(comboBox3.getSelectedItem().equals("choose airport")||comboBox2.getSelectedItem().equals("choose airport"))
+                {
+                    JOptionPane.showMessageDialog(null,"You have to choose airports");
+                }
+                else
+                {
+                    JFrame frame2 = new JFrame("FlightChoice");
+                    frame2.setContentPane(new FlightChoice().FlightChoice);
+                    frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame2.pack();
+                    frame2.setVisible(true);
+                    JFrame f3 = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, ReservationWindow);
+                    f3.dispose();
+                }
             }
         });
+        comboBox2.addItem("choose airport");
         for (String string:domesticAirports)
         {
             comboBox2.addItem(string);
@@ -101,6 +104,7 @@ public class ReservationWindow
         comboBox1.addItem("Show All");
        comboBox1.addItem("Domestic Flights");
         comboBox1.addItem("International Flights");
+        comboBox3.addItem("choose airport");
         for (String string : internationalAirports)
         {
             comboBox3.addItem(string);
@@ -142,6 +146,7 @@ public class ReservationWindow
             public void actionPerformed(ActionEvent e)
             {
                 String tmp = String.valueOf(comboBox3.getSelectedItem());
+                airportNameArrival = tmp;
                 switch (tmp)
                 {
                     case "Paris":
@@ -189,12 +194,12 @@ public class ReservationWindow
                 }
             }
         });
-        businessClassRadioButton.addActionListener(new ActionListener()
+        comboBox2.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                pricePerTicket = pricePerTicket*2;
+                airportNameDeparture = String.valueOf(comboBox2.getSelectedItem());
             }
         });
     }
