@@ -4,11 +4,8 @@ import java.util.List;
 
 public class User
 {
-    private int id;
     private String name;
     private String surname;
-    private String username;
-    private String password;
     List<String> usernames = new ArrayList<>();
 
     public List<String> getUsernames()
@@ -26,39 +23,38 @@ public class User
         return surname;
     }
 
-    public String getUsername()
+    private int adultTickets;
+    private int infantTickets;
+    private int bags;
+
+    public int getAdultTickets()
     {
-        return username;
+        return adultTickets;
     }
 
-    public String getPassword()
+    public void setAdultTickets(int adultTickets)
     {
-        return password;
+        this.adultTickets = adultTickets;
     }
 
-    public void setId(int id)
+    public int getInfantTickets()
     {
-        this.id = id;
+        return infantTickets;
     }
 
-    public void setName(String name)
+    public void setInfantTickets(int infantTickets)
     {
-        this.name = name;
+        this.infantTickets = infantTickets;
     }
 
-    public void setSurname(String surname)
+    public int getBags()
     {
-        this.surname = surname;
+        return bags;
     }
 
-    public void setUsername(String username)
+    public void setBags(int bags)
     {
-        this.username = username;
-    }
-
-    public void setPassword(String password)
-    {
-        this.password = password;
+        this.bags = bags;
     }
 
     public User()
@@ -72,6 +68,27 @@ public class User
             {
                 usernames.add(resultSet.getString("username"));
             }
+
+        }
+        catch (SQLException e)
+        {
+            e.getSQLState();
+        }
+    }
+    public void setData(String username)
+    {
+        try
+        {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/airplanes", "root", null);
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select * from clients where username = '"+username+"'");
+            System.out.println("select * from clients where username = '"+username+"'");
+            while(resultSet.next())
+            {
+                name = resultSet.getString("name");
+                surname = resultSet.getString("surname");
+            }
+
         }
         catch (SQLException e)
         {
@@ -89,7 +106,6 @@ public class User
             {
                 if(resultSet.getString("password").equals(password))
                 {
-                    System.out.println("correct");
                     return true;
                 }
             }

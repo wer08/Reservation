@@ -75,6 +75,7 @@ public class Login
             }
         });
 
+
         mainButton.addActionListener(new ActionListener()
         {
             @Override
@@ -84,8 +85,6 @@ public class Login
                 flagUser = false;
                 username = textField1.getText();
                 password = textField2.getText();
-                name = textField3.getText();
-                surname = textField4.getText();
                 for (String string:users)
                 {
                     if(username.equals(string))
@@ -98,12 +97,15 @@ public class Login
                 {
                     flagPassword = true;
                 }
-                if(!flagPassword)
+                if(!flagPassword||!flagUser)
                 {
                     JOptionPane.showMessageDialog(null,"Wrong username or password");
                 }
                 else
                 {
+                    user.setData(username);
+                    System.out.println(user.getName());
+                    System.out.println(user.getSurname());
                     JFrame frame2 = new JFrame("ReservationWindow");
                     ReservationWindow reservationWindow = new ReservationWindow();
                     frame2.setContentPane(reservationWindow.ReservationWindow);
@@ -119,17 +121,7 @@ public class Login
 
             }
         });
-        mainButton.addKeyListener(new KeyAdapter()
-        {
-            @Override
-            public void keyPressed(KeyEvent e)
-            {
-                if(e.equals(KeyEvent.VK_ENTER))
-                {
 
-                }
-            }
-        });
     }
 
     public static void main(String[] args)

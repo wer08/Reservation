@@ -28,7 +28,6 @@ public class OptionWindow
     private ButtonGroup jRadioButtonGroup = new ButtonGroup();
     private double price;
     private boolean isBusiness;
-
     public JButton getMakeReservationButton()
     {
         return makeReservationButton;
@@ -53,7 +52,6 @@ public class OptionWindow
         spinner1.setModel(spinnerNumberModel1);
         spinner2.setModel(spinnerNumberModel2);
         spinner3.setModel(spinnerNumberModel3);
-
         countThePriceButton.addActionListener(new ActionListener()
         {
             @Override
@@ -67,7 +65,6 @@ public class OptionWindow
                 {
                     price = 2 * ((Integer)spinner1.getValue() *  ReservationWindow.pricePerTicket+ (Integer) spinner2.getValue() * (0.5*ReservationWindow.pricePerTicket) + (Integer)spinner3.getValue()*1.50);
                 }
-                System.out.println(price);
                         PRICE.setText(String.valueOf(price));
 
             }
@@ -77,6 +74,13 @@ public class OptionWindow
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                System.out.println(spinner1.getValue());
+                System.out.println(spinner2.getValue());
+                System.out.println(spinner3.getValue());
+
+                Login.user.setAdultTickets((Integer)spinner1.getValue());
+                Login.user.setInfantTickets((Integer)spinner2.getValue());
+                Login.user.setBags((Integer)spinner3.getValue());
                 if(!(spinner1.getValue().equals(0))||!(spinner2.getValue().equals(0)))
                 {
                     int answer = JOptionPane.showConfirmDialog(null, "Are you sure ?", "Confirm reservation", JOptionPane.YES_NO_OPTION);
@@ -86,12 +90,23 @@ public class OptionWindow
                         try
                         {
 //generate a PDF at the specified location
-                            PdfWriter writer = PdfWriter.getInstance(doc,new FileOutputStream("C:\\Users\\wojci\\OneDrive\\Pulpit\\Nowy folder\\proba2.pdf"));
+                            PdfWriter writer = PdfWriter.getInstance(doc,new FileOutputStream("C:\\Users\\wojci\\OneDrive\\Pulpit\\Nowy folder\\"+ReservationWindow.airportNameArrival+ReservationWindow.airportNameDeparture+".pdf"));
                             System.out.println("PDF created.");
 //opens the PDF
                             doc.open();
 //adds paragraph to the PDF file
                             doc.add(new Paragraph(FlightChoice.flight.getStartingAirport() + " " + FlightChoice.flight.getTimeOfDeparture() + "------>"+FlightChoice.flight.getLandingAirport()+" "+FlightChoice.flight.getTimeOfArrival()));
+                            doc.add(new Paragraph(Login.user.getName()+" "+Login.user.getSurname()));
+                            doc.add(new Paragraph("Adult tickets: "+Login.user.getAdultTickets()+" Infant tickets: "+Login.user.getInfantTickets()+" additional bags: "+Login.user.getBags()));
+                            if(isBusiness)
+                            {
+                                doc.add((new Paragraph("Business class. Whole price: "+price)));
+                            }
+                            else
+                            {
+                                doc.add(new Paragraph("Economy class. Whole price: "+price));
+                            }
+
 //close the PDF file
                             doc.close();
 //closes the writer
