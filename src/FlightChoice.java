@@ -13,11 +13,16 @@ public class FlightChoice
     private int day;
     private int month;
     private int year;
-    private int idclients;
-    private int count;
-    private List<Integer> iddepartures;
 
-    private int idAirport;
+    public JButton getAcceptButton()
+    {
+        return acceptButton;
+    }
+
+    private List<Integer> iddepartures;
+    private List<Integer> idflights;
+    private String sql;
+    private String sql2;
 
     public FlightChoice()
     {
@@ -25,23 +30,39 @@ public class FlightChoice
         month = ReservationWindow.monthInt;
         year = ReservationWindow.yearInt;
         iddepartures = new ArrayList<>();
+        idflights = new ArrayList<>();
+
+
 
 
         try
         {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/airplanes", "root", null);
             Statement statement = connection.createStatement();
-            ResultSet resultSetID = statement.executeQuery("select * from departures,airplane,airports where airports.name ='"+ReservationWindow.airportNameDeparture+"' AND departures.day ='"+day+"' AND departures.month = '"+month+"' AND departures.year = '"+year+"' AND departures.idairplane = airplane.idairplane AND departures.idairport = airports.idairports ");
-            while(resultSetID.next())
+            ResultSet resultSetIDdep = statement.executeQuery("select * from departures,airplane,airports where airports.name ='"+ReservationWindow.airportNameDeparture+"' AND departures.day ='"+day+"' AND departures.month = '"+month+"' AND departures.year = '"+year+"' AND departures.idairplane = airplane.idairplane AND departures.idairport = airports.idairports ");
+            while(resultSetIDdep.next())
             {
-                idAirport = resultSetID.getInt("departures.idairport");
-                System.out.println("select * from departures,airplane,airports,arrivals where departures.idairports ='" + idAirport + "' AND departures.day ='" + day + "' AND departures.month = '" + month + "' AND departures.year = '" + year + "' AND departures.idairplane = airplane.idairplane AND departures.idairport = airports.idairports AND arrivals.idairplane = airplane.idairplane ");
+                iddepartures.add(resultSetIDdep.getInt("departures.iddepartures"));
             }
-                ResultSet resultSet = statement.executeQuery("select * from departures,airplane,airports,arrivals where departures.idairports ='" + idAirport + "' AND departures.day ='" + day + "' AND departures.month = '" + month + "' AND departures.year = '" + year + "' AND departures.idairplane = airplane.idairplane AND departures.idairport = airports.idairports AND arrivals.idairplane = airplane.idairplane ");
-                while (resultSet.next())
-                {
+            for (Integer integer:iddepartures)
+            {
+                sql ="select * from arrivals,flights,airports where airports.name ='"+ReservationWindow.airportNameArrival+"' AND flights.iddeparture = '"+integer+"' AND  arrivals.idairportarrival = airports.idairports AND arrivals.idarrivals = flights.idarrival";
+                //System.out.println(sql);
+                ResultSet resultSetIDarr = statement.executeQuery(sql);
 
-                    comboBox1.addItem(resultSet.getString("departures.hour")+":"+resultSet.getString("departures.minute") + " " + resultSet.getString("airplane.name"));
+                while (resultSetIDarr.next())
+                {
+                    idflights.add(resultSetIDarr.getInt("flights.idflights"));
+                }
+            }
+                for (Integer integer1:idflights)
+                {
+                    sql2 ="select * from departures,flights,arrivals where flights.idflights = "+integer1+" AND flights.iddeparture = departures.iddepartures AND flights.idarrival = arrivals.idarrivals";
+                    ResultSet resultSet = statement.executeQuery(sql2);
+                    while (resultSet.next())
+                    {
+                        comboBox1.addItem("Departure at: "+resultSet.getString("departures.hour") + ":" + resultSet.getString("departures.minute") + " arrival at: " + resultSet.getString("arrivals.hour")+":"+resultSet.getString("arrivals.minute"));
+                    }
                 }
         }
         catch (SQLException e)
@@ -63,10 +84,12 @@ public class FlightChoice
             public void actionPerformed(ActionEvent e)
             {
                 JFrame frame2 = new JFrame("Option Window");
-                frame2.setContentPane(new OptionWindow().OptionWindow);
+                OptionWindow optionWindow = new OptionWindow();
+                frame2.setContentPane(optionWindow.OptionWindow);
                 frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame2.pack();
                 frame2.setVisible(true);
+                frame2.getRootPane().setDefaultButton(optionWindow.getMakeReservationButton());
                 JFrame f3 = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, FlightChoice);
                 f3.dispose();
             }

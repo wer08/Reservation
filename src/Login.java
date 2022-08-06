@@ -1,13 +1,15 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class Login
 {
     private JTextField textField1;
     private JTextField textField2;
-    private JButton logInButton;
+    private JButton mainButton;
     private JButton registerButton;
     private JPanel Login;
     private JTextField textField3;
@@ -21,6 +23,7 @@ public class Login
     private String password;
     private String name;
     private String surname;
+    private ActionListener actionListener;
 
 
 
@@ -28,6 +31,7 @@ public class Login
     public Login()
     {
         user = new User();
+        frame.getRootPane().setDefaultButton(mainButton);
 
 
         List <String> users = user.getUsernames();
@@ -70,7 +74,7 @@ public class Login
             }
         });
 
-        logInButton.addActionListener(new ActionListener()
+        mainButton.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
@@ -102,15 +106,29 @@ public class Login
                 else
                 {
                     JFrame frame2 = new JFrame("ReservationWindow");
-                    frame2.setContentPane(new ReservationWindow().ReservationWindow);
+                    ReservationWindow reservationWindow = new ReservationWindow();
+                    frame2.setContentPane(reservationWindow.ReservationWindow);
                     frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame2.pack();
                     frame2.setVisible(true);
+                    frame2.getRootPane().setDefaultButton(reservationWindow.getReservationButton());
                     frame.dispose();
+
                 }
 
 
 
+            }
+        });
+        mainButton.addKeyListener(new KeyAdapter()
+        {
+            @Override
+            public void keyPressed(KeyEvent e)
+            {
+                if(e.equals(KeyEvent.VK_ENTER))
+                {
+
+                }
             }
         });
     }
@@ -122,6 +140,7 @@ public class Login
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
 
     }
 

@@ -14,7 +14,13 @@ public class ReservationWindow
     private List<String> internationalAirports = new ArrayList<>();
 
 
-    private JButton startReservationButton;
+    private JButton reservationButton;
+
+    public JButton getReservationButton()
+    {
+        return reservationButton;
+    }
+
     public JPanel ReservationWindow;
     private JSpinner spinner1;
     private JSpinner spinner2;
@@ -37,11 +43,13 @@ public class ReservationWindow
 
 
 
+
     public ReservationWindow()
     {
         spinner1.setModel(day);
         spinner2.setModel(month);
         spinner3.setModel(year);
+
 
 
         List<String> allAirports = new ArrayList<>();
@@ -72,7 +80,7 @@ public class ReservationWindow
         }
 
 
-        startReservationButton.addActionListener(new ActionListener()
+        reservationButton.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
@@ -87,10 +95,12 @@ public class ReservationWindow
                 else
                 {
                     JFrame frame2 = new JFrame("FlightChoice");
-                    frame2.setContentPane(new FlightChoice().FlightChoice);
+                    FlightChoice flightChoice = new FlightChoice();
+                    frame2.setContentPane(flightChoice.FlightChoice);
                     frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame2.pack();
                     frame2.setVisible(true);
+                    frame2.getRootPane().setDefaultButton(flightChoice.getAcceptButton());
                     JFrame f3 = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, ReservationWindow);
                     f3.dispose();
                 }
@@ -204,14 +214,6 @@ public class ReservationWindow
         });
     }
 
-   /* public static void main(String[] args)
-    {
-        frame = new JFrame("ReservationWindow");
-        frame.setContentPane(new ReservationWindow().ReservationWindow);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }*/
 
     private void createUIComponents()
     {
