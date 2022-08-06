@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="74859f88-c98b-4d58-b59a-2596465abee5" name="Changes" comment="working on spinners">
+    <list default="true" id="74859f88-c98b-4d58-b59a-2596465abee5" name="Changes" comment="Acceptance by clicking enter. Fully working database">
+      <change afterPath="$PROJECT_DIR$/lib/itextpdf-5.5.13.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Flight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reservation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Reservation.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FlightChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlightChoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OptionWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/OptionWindow.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OptionWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OptionWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ReservationWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReservationWindow.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ReservationWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReservationWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,17 +38,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/wojci/Downloads/project/Reservation/lib/mysql-connector-java-8.0.30.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/wojci/Downloads/project/Reservation/lib/itextpdf-5.5.13.2.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.Unnamed">
     <configuration name="ReservationWindow" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ReservationWindow" />
@@ -107,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659603739516</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Acceptance by clicking enter. Fully working database">
+      <created>1659796069961</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1659796069961</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -127,6 +133,7 @@
     <MESSAGE value="Added first implementation of dataBase" />
     <MESSAGE value="windows closing when going to the next window" />
     <MESSAGE value="working on spinners" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on spinners" />
+    <MESSAGE value="Acceptance by clicking enter. Fully working database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Acceptance by clicking enter. Fully working database" />
   </component>
 </project>

@@ -1,7 +1,14 @@
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
 import javax.swing.*;
 import javax.swing.plaf.nimbus.State;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.*;
 
 public class OptionWindow
@@ -62,6 +69,7 @@ public class OptionWindow
                 }
                 System.out.println(price);
                         PRICE.setText(String.valueOf(price));
+
             }
         });
         makeReservationButton.addActionListener(new ActionListener()
@@ -74,6 +82,29 @@ public class OptionWindow
                     int answer = JOptionPane.showConfirmDialog(null, "Are you sure ?", "Confirm reservation", JOptionPane.YES_NO_OPTION);
                     if (answer == 0)
                     {
+                        Document doc = new Document();
+                        try
+                        {
+//generate a PDF at the specified location
+                            PdfWriter writer = PdfWriter.getInstance(doc,new FileOutputStream("C:\\Users\\wojci\\OneDrive\\Pulpit\\Nowy folder\\proba2.pdf"));
+                            System.out.println("PDF created.");
+//opens the PDF
+                            doc.open();
+//adds paragraph to the PDF file
+                            doc.add(new Paragraph(FlightChoice.flight.getStartingAirport() + " " + FlightChoice.flight.getTimeOfDeparture() + "------>"+FlightChoice.flight.getLandingAirport()+" "+FlightChoice.flight.getTimeOfArrival()));
+//close the PDF file
+                            doc.close();
+//closes the writer
+                            writer.close();
+                        }
+                        catch (DocumentException exception)
+                        {
+                            exception.printStackTrace();
+                        }
+                        catch (FileNotFoundException exception)
+                        {
+                            exception.printStackTrace();
+                        }
                         JOptionPane.showMessageDialog(null, "SUCCESFUL RESERVATION");
                     }
                 }

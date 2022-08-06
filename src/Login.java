@@ -15,7 +15,7 @@ public class Login
     private JTextField textField3;
     private JTextField textField4;
     private static JFrame frame;
-    private final User user;
+    public static User user;
     private boolean flag;
     private boolean flagUser;
     private boolean flagPassword;
@@ -23,10 +23,11 @@ public class Login
     private String password;
     private String name;
     private String surname;
-    private ActionListener actionListener;
 
-
-
+    public String getUsername()
+    {
+        return username;
+    }
 
     public Login()
     {
@@ -90,14 +91,12 @@ public class Login
                     if(username.equals(string))
                     {
                         flagUser =true;
-                        System.out.println("User found");
                     }
                 }
 
                 if(user.checkPassword(username,password))
                 {
                     flagPassword = true;
-                    System.out.println("password correct");
                 }
                 if(!flagPassword)
                 {

@@ -13,6 +13,8 @@ public class FlightChoice
     private int day;
     private int month;
     private int year;
+    public static Flight flight;
+
 
     public JButton getAcceptButton()
     {
@@ -23,6 +25,10 @@ public class FlightChoice
     private List<Integer> idflights;
     private String sql;
     private String sql2;
+    private String timeOfArrival;
+    private String timeOfDeparture;
+    private String  startingAirport;
+    private String landingAirport;
 
     public FlightChoice()
     {
@@ -31,6 +37,7 @@ public class FlightChoice
         year = ReservationWindow.yearInt;
         iddepartures = new ArrayList<>();
         idflights = new ArrayList<>();
+
 
 
 
@@ -61,6 +68,10 @@ public class FlightChoice
                     ResultSet resultSet = statement.executeQuery(sql2);
                     while (resultSet.next())
                     {
+                        timeOfArrival = ""+resultSet.getString("arrivals.hour")+":"+resultSet.getString("arrivals.minute");
+                        timeOfDeparture = ""+resultSet.getString("departures.hour") + ":" + resultSet.getString("departures.minute");
+                        startingAirport = ReservationWindow.airportNameDeparture;
+                        landingAirport = ReservationWindow.airportNameArrival;
                         comboBox1.addItem("Departure at: "+resultSet.getString("departures.hour") + ":" + resultSet.getString("departures.minute") + " arrival at: " + resultSet.getString("arrivals.hour")+":"+resultSet.getString("arrivals.minute"));
                     }
                 }
@@ -69,6 +80,7 @@ public class FlightChoice
         {
             e.getSQLState();
         }
+        flight = new Flight(timeOfArrival,timeOfDeparture,startingAirport,landingAirport);
 
         comboBox1.addActionListener(new ActionListener()
         {
